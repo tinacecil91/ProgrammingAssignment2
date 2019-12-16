@@ -4,14 +4,14 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-        a <- NULL
+        b <- NULL
         set <- function(y) {
                 x <<- y
-                a <<- NULL
+                b <<- NULL
         }
         get <- function() x
-        setmean <- function(mean) a <<- mean
-        getmean <- function() a
+        setmean <- function(mean) b <<- mean
+        getmean <- function() b
         list(set = set, get = get,
              setmean = setmean,
              getmean = getmean)
@@ -22,13 +22,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-        a <- x$getmean()
-        if(!is.null(a)) {
+        b <- x$getmean()
+        if(!is.null(b)) {
                 message("getting cached data")
-                return(a)
+                return(b)
         }
         data <- x$get()
-        a <- mean(data, ...)
-        x$setmean(a)
-        a
+        b <- mean(data, ...)
+        x$setmean(b)
+        b
 }
